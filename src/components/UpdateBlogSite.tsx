@@ -4,9 +4,9 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 
 export default function UpdateBlogSite({ blog }: { blog: any }) {
-  const [name, setName] = useState(blog.name);
-  const [url, setUrl] = useState(blog.url);
-  const [feedUrl, setFeedUrl] = useState(blog.feedUrl);
+  const [name, setName] = useState(blog.name || "");
+  const [url, setUrl] = useState(blog.url || "");
+  const [feedUrl, setFeedUrl] = useState(blog.feedUrl || "");
 
   const handleUpdate = async () => {
     try {

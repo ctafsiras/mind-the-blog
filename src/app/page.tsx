@@ -49,9 +49,8 @@ export default async function Home() {
               <h2 className="card-title">
                 {site.name ?? `${site.url} Waiting For Admin Approval`}
               </h2>
-              <p>
-                {site?.latestBlogTitle ?? "Waiting For First Fetch from Server"}
-              </p>
+              <h3 className="text-xl">Latest: {site?.latestBlogTitle}</h3>
+              <p>{site?.description}</p>
               <div className="card-actions justify-end">
                 <a
                   href={site.latestBlogUrl as string}
