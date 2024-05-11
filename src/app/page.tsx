@@ -1,22 +1,10 @@
 import AddBlog from "@/components/AddBlog";
-import { getLatestBlog } from "@/utils/latestBlog";
 import { prisma } from "@/utils/prisma";
 import Parser from "rss-parser";
 
 export default async function Home() {
-  const parser = new Parser();
-
   const blogSites = await prisma.blogSite.findMany({});
 
-  // const links = await Promise.all(
-  //   src.map(async (url) => {
-  //     const blogs = await parser.parseURL(url.feedUrl as string);
-  //     return {
-  //       blog: blogs.items[0],
-  //       title: blogs.title,
-  //     };
-  //   })
-  // );
   return (
     <div className="flex flex-col justify-evenly items-center min-h-screen">
       <h2 className="text-4xl font-bold">Welcome to Mind The Blog</h2>
@@ -49,8 +37,26 @@ export default async function Home() {
               <h2 className="card-title">
                 {site.name ?? `${site.url} Waiting For Admin Approval`}
               </h2>
-              <h3 className="text-xl">Latest: {site?.latestBlogTitle}</h3>
-              <p>{site?.description}</p>
+              <h3 className="text-xl font-bold">
+                <div className="badge badge-info gap-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    className="inline-block w-4 h-4 stroke-current"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    ></path>
+                  </svg>
+                  info
+                </div>
+                Latest: {site?.latestBlogTitle}
+              </h3>
+              <p>{site?.latestBlogDescription}</p>
               <div className="card-actions justify-end">
                 <a
                   href={site.latestBlogUrl as string}

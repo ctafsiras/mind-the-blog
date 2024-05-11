@@ -35,7 +35,6 @@ export async function PUT(request: Request) {
   const data = await request.json();
   console.log("HELLO", data.feedUrl);
   const { latestBlog } = await getLatestBlog("https://" + data.feedUrl);
-  console.log("BYE", latestBlog);
   const { id } = data;
   const blogSite = await prisma.blogSite.update({
     where: {
@@ -45,9 +44,19 @@ export async function PUT(request: Request) {
       url: data.url,
       name: data.name,
       feedUrl: data.feedUrl,
-      description: latestBlog.content,
+      latestBlogDescription: latestBlog.content,
       latestBlogTitle: latestBlog.title,
       latestBlogUrl: latestBlog.link,
+      latestBlogDate: latestBlog.isoDate,
+    },
+  });
+  return Response.json({ blogSite });
+}
+export async function DELETE(request: Request) {
+  const { id } = await request.json();
+  const blogSite = await prisma.blogSite.delete({
+    where: {
+      id,
     },
   });
   return Response.json({ blogSite });

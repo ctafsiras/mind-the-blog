@@ -46,7 +46,7 @@ export default function UpdateBlogSite({ blog }: { blog: any }) {
               onChange={(e) => setName(e.target.value)}
               type="text"
               className="grow"
-              placeholder="Daisy"
+              placeholder="Site Name"
             />
           </label>
           <label className="input input-bordered flex items-center gap-2">
@@ -56,7 +56,7 @@ export default function UpdateBlogSite({ blog }: { blog: any }) {
               type="text"
               className="grow"
               value={url}
-              placeholder="daisy@site.com"
+              placeholder="site.com"
             />
           </label>
           <label className="input input-bordered flex items-center gap-2">
@@ -66,7 +66,7 @@ export default function UpdateBlogSite({ blog }: { blog: any }) {
               type="text"
               className="grow"
               value={feedUrl}
-              placeholder=""
+              placeholder="site.com/feed"
             />
           </label>
 

@@ -1,6 +1,7 @@
 import { prisma } from "@/utils/prisma";
 import React from "react";
 import UpdateBlogSite from "./UpdateBlogSite";
+import DeleteBlog from "./DeleteBlog";
 
 export default async function AllBlogSiteTable() {
   const data = await prisma.blogSite.findMany();
@@ -30,7 +31,9 @@ export default async function AllBlogSiteTable() {
                 <td className="">
                   <UpdateBlogSite blog={blog} />
                 </td>
-                <td className="">X</td>
+                <td className="">
+                  <DeleteBlog id={blog.id} />
+                </td>
               </tr>
             ))}
           </tbody>
