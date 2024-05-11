@@ -4,6 +4,7 @@ import "./globals.css";
 import toast, { Toaster } from "react-hot-toast";
 import Navbar from "@/components/Navbar";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const font = Share_Tech_Mono({ subsets: ["latin"], weight: ["400"] });
 
@@ -25,7 +26,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" data-thesme="light">
-      <Analytics/>
+      <Analytics />
+      <SpeedInsights />
       <body className={font.className}>
         <Navbar />
         <main className="container mx-auto">{children}</main>
