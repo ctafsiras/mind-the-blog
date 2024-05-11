@@ -1,33 +1,27 @@
+import { auth, signIn, signOut } from "@/utils/auth";
 import Link from "next/link";
 import React from "react";
 
-export default function Navbar() {
+export default async function Navbar() {
+  const session = await auth();
   return (
     <div>
       <div className="navbar bg-base-100">
         <div className="flex-1">
-          <a className="btn btn-ghost text-xl">Mind The Blog</a>
+          <Link href="/" className="btn btn-ghost text-xl">
+            Mind The Blog
+          </Link>
         </div>
         <div className="flex-none">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal px-1 mx-1">
             <li>
               <Link href="/">Home</Link>
             </li>
             <li>
-              <Link href="/dashboard">Dashboard</Link>
+              <Link href="/app">App</Link>
             </li>
             <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2 bg-base-100 rounded-t-none">
-                  <li>
-                    <a>Link 1</a>
-                  </li>
-                  <li>
-                    <a>Link 2</a>
-                  </li>
-                </ul>
-              </details>
+              <Link href="/dashboard">Dashboard</Link>
             </li>
             <label className="swap swap-rotate">
               {/* this hidden checkbox controls the state */}
@@ -56,6 +50,52 @@ export default function Navbar() {
               </svg>
             </label>
           </ul>
+          {session?.user ? (
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src={session.user.image as string}
+                  />
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+              >
+                <div>
+                  <form
+                    action={async () => {
+                      "use server";
+                      await signOut();
+                    }}
+                  >
+                    <button className="btn btn-secondary w-full" type="submit">
+                      Sign Out
+                    </button>
+                  </form>
+                </div>
+              </ul>
+            </div>
+          ) : (
+            <div>
+              <form
+                action={async () => {
+                  "use server";
+                  await signIn("google");
+                }}
+              >
+                <button className="btn btn-primary" type="submit">
+                  Signin with Google
+                </button>
+              </form>
+            </div>
+          )}
         </div>
       </div>
     </div>
