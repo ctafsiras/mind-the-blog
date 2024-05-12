@@ -11,10 +11,6 @@
     {
       "path": "/api/send",
       "schedule": "0 16 * * *"
-    },
-    {
-      "path": "/api/send",
-      "schedule": "0 18 * * *"
     }
   ]
 }
