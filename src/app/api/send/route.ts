@@ -16,6 +16,13 @@ export async function GET() {
     const { latestBlog } = await getLatestBlog("https://" + site.feedUrl);
     if (latestBlog.title === site.latestBlogTitle) {
       console.log(latestBlog.title, "No new blog");
+      const msg = {
+        to: "ctafsiras@gmail.com", // Change to your recipient
+        from: "ctafsiras@gmail.com", // Change to your verified sender
+        subject: `No new blog`,
+        text: "No new blog text",
+      };
+      await sgMail.send(msg);
     } else {
       console.log(latestBlog.title, "New blog");
       const msg = {
