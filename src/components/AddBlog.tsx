@@ -1,8 +1,9 @@
 "use client";
+
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
-export default function AddBlog() {
+export default function AddBlog({ id }: { id: string }) {
   const [hostname, setHostname] = useState("");
   const [loading, setLoading] = useState(false);
   const handleSubmit = async () => {
@@ -13,7 +14,7 @@ export default function AddBlog() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ url: hostname }),
+        body: JSON.stringify({ url: hostname, id }),
       });
       if (response.ok) {
         toast.success("Blog added successfully");
@@ -41,7 +42,7 @@ export default function AddBlog() {
             type="url"
             value={hostname}
             className="grow text-secondary"
-            placeholder="daisy.site.com"
+            placeholder="site.com"
           />
         </label>
         <div className="card-actions justify-end">

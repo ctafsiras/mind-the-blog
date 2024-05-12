@@ -4,6 +4,7 @@ import React from "react";
 
 export default async function Navbar() {
   const session = await auth();
+  console.log(session?.user?.email );
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -20,9 +21,11 @@ export default async function Navbar() {
             <li>
               <Link href="/app">App</Link>
             </li>
-            <li>
-              <Link href="/dashboard">Dashboard</Link>
-            </li>
+            {session?.user?.email === "ctafsiras@gmail.com" && (
+              <li>
+                <Link href="/dashboard">Dashboard</Link>
+              </li>
+            )}
             <label className="swap swap-rotate">
               {/* this hidden checkbox controls the state */}
               <input

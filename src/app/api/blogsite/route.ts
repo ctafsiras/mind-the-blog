@@ -14,11 +14,42 @@ export async function POST(request: Request) {
       },
     });
     if (isExist) {
+      await prisma.user.update({
+        where: {
+          id: data.id,
+        },
+        data: {
+          blogSiteId: {
+            push: isExist.id,
+          },
+        },
+      });
+      await prisma.blogSite.update({
+        where: {
+          url: data.url,
+        },
+        data: {
+          userId: {
+            push: data.id,
+          },
+        },
+      });
       return Response.json({ blogSite: isExist });
     }
     const blogSite = await prisma.blogSite.create({
       data: {
         url: data.url,
+        userId: [data.id],
+      },
+    });
+    await prisma.user.update({
+      where: {
+        id: data.id,
+      },
+      data: {
+        blogSiteId: {
+          push: blogSite.id,
+        },
       },
     });
     return Response.json({ blogSite });

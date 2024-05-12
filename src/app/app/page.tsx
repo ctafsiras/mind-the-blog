@@ -1,7 +1,6 @@
 import AddBlog from "@/components/AddBlog";
 import { auth, signIn } from "@/utils/auth";
 import { prisma } from "@/utils/prisma";
-import Parser from "rss-parser";
 
 export default async function Home() {
   const session = await auth();
@@ -20,13 +19,24 @@ export default async function Home() {
         </form>
       </div>
     );
-  const blogSites = await prisma.blogSite.findMany({});
 
+  const me = await prisma.user.findFirst({
+    where: {
+      email: session?.user?.email as string,
+    },
+  });
+  const blogSites = await prisma.blogSite.findMany({
+    where: {
+      userId: {
+        has: me?.id as string,
+      },
+    },
+  });
   return (
     <div className="flex flex-col justify-evenly items-center min-h-screen">
       <h2 className="text-4xl font-bold">Welcome to Mind The Blog</h2>
       <div className="flex flex-wrap gap-4 justify-center">
-        <AddBlog />
+        <AddBlog id={me!.id} />
         {blogSites.map((site) => (
           <div
             key={site.id}

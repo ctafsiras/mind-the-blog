@@ -1,8 +1,10 @@
 import React from "react";
 import { signIn, signOut, auth } from "@/utils/auth";
 
+
 const Homepage = async () => {
   const session = await auth();
+
   return (
     <div>
       {session?.user ? (
