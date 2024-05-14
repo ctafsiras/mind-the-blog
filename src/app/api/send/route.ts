@@ -74,7 +74,7 @@ export async function GET() {
       // };
       // const res = await sgMail.send(msg);
       // console.log(res);
-      if (res[0].statusCode === 202) {
+      if (res.status === 200) {
         await prisma.blogSite.update({
           where: { id: site.id },
           data: {
