@@ -24,16 +24,13 @@ export async function GET() {
     const { latestBlog } = await getLatestBlog("https://" + site.feedUrl);
     if (latestBlog.title === site.latestBlogTitle) {
       console.log(latestBlog.title, "No new blog");
-      const res = await mg.messages.create(
-        "sandboxece7a76964b9408da1fa85dc27a47824.mailgun.org",
-        {
-          from: "MTB Admin <mailgun@sandboxece7a76964b9408da1fa85dc27a47824.mailgun.org>",
-          to: ["ctafsiras@gmail.com"],
-          subject: "Hello",
-          text: "Testing some Mailgun awesomeness!",
-          html: "<h1>Testing some Mailgun awesomeness!</h1>",
-        }
-      );
+      const res = await mg.messages.create("ctanbiras.me", {
+        from: "MTB Admin <mailgun@ctanbiras.me>",
+        to: ["ctafsiras@gmail.com"],
+        subject: "Hello",
+        text: "Testing some Mailgun awesomeness!",
+        html: "<h1>Testing some Mailgun awesomeness!</h1>",
+      });
       console.log("Mail Res", res);
       // SENDGRID MAIL SYSTEM
       // const msg = {
@@ -46,16 +43,13 @@ export async function GET() {
     } else {
       console.log(latestBlog.title, "New blog");
 
-      const res = await mg.messages.create(
-        "sandboxece7a76964b9408da1fa85dc27a47824.mailgun.org",
-        {
-          from: "Not MTB Admin <mailgun@sandboxece7a76964b9408da1fa85dc27a47824.mailgun.org>",
-          to: ["ctafsiras@gmail.com"],
-          subject: "Hello",
-          text: "Testing some Mailgun awesomeness!",
-          html: "<h1>Testing some Mailgun awesomeness!</h1>",
-        }
-      );
+      const res = await mg.messages.create("ctanbiras.me", {
+        from: "Not MTB Admin <mailgun@ctanbiras.me>",
+        to: ["ctafsiras@gmail.com"],
+        subject: "Hello",
+        text: "Testing some Mailgun awesomeness!",
+        html: "<h1>Testing some Mailgun awesomeness!</h1>",
+      });
       console.log("Mail Res", res);
 
       // SENDGRID MAIL SYSTEM
