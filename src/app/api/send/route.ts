@@ -76,13 +76,21 @@ export async function POST() {
 
       // console.log("Message sent: %s", info.messageId);
       //MailGun System
-      // const res = await mg.messages.create("ctanbiras.me", {
-      //   from: "Not MTB Admin <mailgun@ctanbiras.me>",
-      //   to: ["ctafsiras@gmail.com"],
-      //   subject: "Hello",
-      //   text: "Testing some Mailgun awesomeness!",
-      //   html: "<h1>Testing some Mailgun awesomeness!</h1>",
-      // });
+      const res = await mg.messages.create("ctanbiras.me", {
+        from: "Mind The Blogger <reminder@ctanbiras.me>",
+        to: ["ctafsiras@gmail.com"],
+        subject: `${site.name} has a new blog`,
+        html: `
+        <div style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
+        <div style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+            <h1 style="color: #333333; text-align: center; margin-bottom: 20px;">${site.name} has a new blog</h1>
+            <h2 style="color: #007bff; margin-top: 0;">${latestBlog.title}</h2>
+            <p style="color: #666666; margin-top: 10px;">${latestBlog.description}</p>
+            <a href="${latestBlog.link}" style="display: block; color: #ffffff; background-color: #007bff; text-decoration: none; text-align: center; padding: 10px; margin-top: 20px; border-radius: 5px;" target="_blank">Read more</a>
+        </div>
+    </div>
+        `,
+      });
       // console.log("Mail Res", res);
 
       // SENDGRID MAIL SYSTEM
@@ -101,7 +109,7 @@ export async function POST() {
       // };
       // const res = await sgMail.send(msg);
       // console.log(res);
-      if (true) {
+      if (res.status === 200) {
         // if (info.status === 200) {
         await prisma.blogSite.update({
           where: { id: site.id },
@@ -116,13 +124,5 @@ export async function POST() {
     }
   }
 
-  const res = await mg.messages.create("ctanbiras.me", {
-    from: `Admin ${Math.random()}<admin@ctanbiras.me>`,
-    to: ["ctafsiras@gmail.com", "chowdhurytafsirahmedsiddiki@my.uopeople.edu"],
-    subject: `Welcome to ${Math.random()}`,
-    text: "Testing some Mailgun awesomeness!",
-    html: "<h1>Testing some Mailgun awesomeness!</h1>",
-  });
-
-  return Response.json({ res });
+  return Response.json({ success: true });
 }
