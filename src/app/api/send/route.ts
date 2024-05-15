@@ -10,6 +10,18 @@ const mg = mailgun.client({
   key: process.env.MAILGUN_API_KEY,
 });
 
+const nodemailer = require("nodemailer");
+
+const transporter = nodemailer.createTransport({
+  host: "smtp.ethereal.email",
+  port: 587,
+  secure: false, // Use `true` for port 465, `false` for all other ports
+  auth: {
+    user: "maddison53@ethereal.email",
+    pass: "jn7jnAPss4f63QBp6D",
+  },
+});
+
 export async function GET() {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
   const blogSites = await prisma.blogSite.findMany({
@@ -24,14 +36,25 @@ export async function GET() {
     const { latestBlog } = await getLatestBlog("https://" + site.feedUrl);
     if (latestBlog.title === site.latestBlogTitle) {
       console.log(latestBlog.title, "No new blog");
-      const res = await mg.messages.create("ctanbiras.me", {
-        from: "MTB Admin <mailgun@ctanbiras.me>",
-        to: ["ctafsiras@gmail.com"],
-        subject: "Hello",
-        text: "Testing some Mailgun awesomeness!",
-        html: "<h1>Testing some Mailgun awesomeness!</h1>",
-      });
-      console.log("Mail Res", res);
+      //NodeMailer system
+      // const info = await transporter.sendMail({
+      //   from: '"Maddison Foo Koch 👻" <maddison53@ethereal.email>', // sender address
+      //   to: "ctafsiras@gmail.com", // list of receivers
+      //   subject: "Hello ✔", // Subject line
+      //   text: "Hello world?", // plain text body
+      //   html: "<b>Hello world?</b>", // html body
+      // });
+
+      // console.log("Message sent: %s", info.messageId);
+      //MailGun System
+      // const res = await mg.messages.create("ctanbiras.me", {
+      //   from: "MTB Admin <mailgun@ctanbiras.me>",
+      //   to: ["ctafsiras@gmail.com"],
+      //   subject: "Hello",
+      //   text: "Testing some Mailgun awesomeness!",
+      //   html: "<h1>Testing some Mailgun awesomeness!</h1>",
+      // });
+      // console.log("Mail Res", res);
       // SENDGRID MAIL SYSTEM
       // const msg = {
       //   to: "ctafsiras@gmail.com", // Change to your recipient
@@ -42,15 +65,25 @@ export async function GET() {
       // await sgMail.send(msg);
     } else {
       console.log(latestBlog.title, "New blog");
+      //NodeMailer system
+      // const info = await transporter.sendMail({
+      //   from: '"Maddison Foo Koch 👻" <maddison53@ethereal.email>', // sender address
+      //   to: "ctafsiras@gmail.com", // list of receivers
+      //   subject: "Hello ✔", // Subject line
+      //   text: "Hello world?", // plain text body
+      //   html: "<b>Hello world?</b>", // html body
+      // });
 
-      const res = await mg.messages.create("ctanbiras.me", {
-        from: "Not MTB Admin <mailgun@ctanbiras.me>",
-        to: ["ctafsiras@gmail.com"],
-        subject: "Hello",
-        text: "Testing some Mailgun awesomeness!",
-        html: "<h1>Testing some Mailgun awesomeness!</h1>",
-      });
-      console.log("Mail Res", res);
+      // console.log("Message sent: %s", info.messageId);
+      //MailGun System
+      // const res = await mg.messages.create("ctanbiras.me", {
+      //   from: "Not MTB Admin <mailgun@ctanbiras.me>",
+      //   to: ["ctafsiras@gmail.com"],
+      //   subject: "Hello",
+      //   text: "Testing some Mailgun awesomeness!",
+      //   html: "<h1>Testing some Mailgun awesomeness!</h1>",
+      // });
+      // console.log("Mail Res", res);
 
       // SENDGRID MAIL SYSTEM
 
@@ -68,7 +101,8 @@ export async function GET() {
       // };
       // const res = await sgMail.send(msg);
       // console.log(res);
-      if (res.status === 200) {
+      if (true) {
+        // if (info.status === 200) {
         await prisma.blogSite.update({
           where: { id: site.id },
           data: {
@@ -82,5 +116,13 @@ export async function GET() {
     }
   }
 
-  return Response.json({ success: true });
+  const res = await mg.messages.create("ctanbiras.me", {
+    from: "Admin CTANBIRAS<admin@ctanbiras.me>",
+    to: ["ctafsiras@gmail.com", "chowdhurytafsirahmedsiddiki@my.uopeople.edu"],
+    subject: "Welcome to You",
+    text: "Testing some Mailgun awesomeness!",
+    html: "<h1>Testing some Mailgun awesomeness!</h1>",
+  });
+
+  return Response.json({ res });
 }
