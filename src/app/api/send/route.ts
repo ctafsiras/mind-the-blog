@@ -22,7 +22,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-export async function GET() {
+export async function POST() {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
   const blogSites = await prisma.blogSite.findMany({
     where: {
@@ -117,9 +117,9 @@ export async function GET() {
   }
 
   const res = await mg.messages.create("ctanbiras.me", {
-    from: "Admin CTANBIRAS<admin@ctanbiras.me>",
+    from: `Admin ${Math.random()}<admin@ctanbiras.me>`,
     to: ["ctafsiras@gmail.com", "chowdhurytafsirahmedsiddiki@my.uopeople.edu"],
-    subject: "Welcome to You",
+    subject: `Welcome to ${Math.random()}`,
     text: "Testing some Mailgun awesomeness!",
     html: "<h1>Testing some Mailgun awesomeness!</h1>",
   });
