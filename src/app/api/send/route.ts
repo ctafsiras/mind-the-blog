@@ -33,7 +33,7 @@ export async function POST() {
   });
 
   for (const site of blogSites) {
-    const { latestBlog } = await getLatestBlog("https://" + site.feedUrl);
+    const { latestBlog } = await getLatestBlog(site.feedUrl as string);
     if (latestBlog.title === site.latestBlogTitle) {
       console.log(latestBlog.title, "No new blog");
       //NodeMailer system

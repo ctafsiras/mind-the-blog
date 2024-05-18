@@ -45,7 +45,7 @@ export async function POST(request: Request) {
 
 export async function PUT(request: Request) {
   const data = await request.json();
-  const { latestBlog } = await getLatestBlog("https://" + data.feedUrl);
+  const { latestBlog } = await getLatestBlog(data.feedUrl);
   const { id } = data;
   const blogSite = await prisma.blogSite.update({
     where: {
