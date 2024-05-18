@@ -77,9 +77,10 @@ export async function POST() {
       // console.log("Message sent: %s", info.messageId);
       //MailGun System
       const res = await mg.messages.create("ctanbiras.me", {
-        from: "Mind The Blogger <reminder@ctanbiras.me>",
+        from: "Mind The Blog <reminder@ctanbiras.me>",
         to: ["ctafsiras@gmail.com"],
-        subject: `${site.name} has a new blog`,
+        bcc: site.subscribers,
+        subject: `${site.name} has published a new blog`,
         html: `
         <div style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
         <div style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
