@@ -20,15 +20,10 @@ export default async function Home() {
       </div>
     );
 
-  const me = await prisma.user.findFirst({
-    where: {
-      email: session?.user?.email as string,
-    },
-  });
   const blogSites = await prisma.blogSite.findMany({
     where: {
-      userId: {
-        has: me?.id as string,
+      subscribers: {
+        has: session.user?.email as string,
       },
     },
   });
@@ -36,7 +31,7 @@ export default async function Home() {
     <div className="flex flex-col justify-evenly items-center min-h-screen">
       <h2 className="text-4xl font-bold">Welcome to Mind The Blog</h2>
       <div className="flex flex-wrap gap-4 justify-center">
-        <AddBlog id={me!.id} />
+        <AddBlog email={session.user?.email as string} />
         {blogSites.map((site) => (
           <div
             key={site.id}

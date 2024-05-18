@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
-export default function AddBlog({ id }: { id: string }) {
+export default function AddBlog({ email }: { email: string }) {
   const [hostname, setHostname] = useState("");
   const [loading, setLoading] = useState(false);
   const handleSubmit = async () => {
@@ -14,7 +14,7 @@ export default function AddBlog({ id }: { id: string }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ url: hostname, id }),
+        body: JSON.stringify({ url: hostname, email }),
       });
       if (response.ok) {
         toast.success("Blog added successfully");

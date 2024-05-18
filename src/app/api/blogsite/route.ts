@@ -14,23 +14,13 @@ export async function POST(request: Request) {
       },
     });
     if (isExist) {
-      await prisma.user.update({
-        where: {
-          id: data.id,
-        },
-        data: {
-          blogSiteId: {
-            push: isExist.id,
-          },
-        },
-      });
       await prisma.blogSite.update({
         where: {
           url: data.url,
         },
         data: {
-          userId: {
-            push: data.id,
+          subscribers: {
+            push: data.email,
           },
         },
       });
@@ -39,19 +29,10 @@ export async function POST(request: Request) {
     const blogSite = await prisma.blogSite.create({
       data: {
         url: data.url,
-        userId: [data.id],
+        subscribers: [data.email],
       },
     });
-    await prisma.user.update({
-      where: {
-        id: data.id,
-      },
-      data: {
-        blogSiteId: {
-          push: blogSite.id,
-        },
-      },
-    });
+
     return Response.json({ blogSite });
   } catch (error) {
     console.error(error);
@@ -64,7 +45,6 @@ export async function POST(request: Request) {
 
 export async function PUT(request: Request) {
   const data = await request.json();
-  console.log("HELLO", data.feedUrl);
   const { latestBlog } = await getLatestBlog("https://" + data.feedUrl);
   const { id } = data;
   const blogSite = await prisma.blogSite.update({
