@@ -1,5 +1,6 @@
 "use client";
 
+import { urlCleaner } from "@/utils/urlCleaner";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -14,7 +15,7 @@ export default function AddBlog({ email }: { email: string }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ url: hostname, email }),
+        body: JSON.stringify({ url: urlCleaner(hostname), email }),
       });
       if (response.ok) {
         toast.success("Blog added successfully");
