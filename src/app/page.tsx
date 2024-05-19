@@ -1,45 +1,22 @@
+import { BenefitSection } from "@/components/component/benefit-section";
+import { CallToAction } from "@/components/component/call-to-action";
+import { FAQ } from "@/components/component/faq";
+import { FeatureSection } from "@/components/component/feature-section";
+import { HeroSection } from "@/components/component/hero-section";
+import { HowItWorkSection } from "@/components/component/how-it-work-section";
+import { TestimonialSection } from "@/components/component/testimonial-section";
 import React from "react";
-import { signIn, signOut, auth } from "@/utils/auth";
-
 
 const Homepage = async () => {
-  const session = await auth();
-
   return (
     <div>
-      {session?.user ? (
-        <div>
-          <h1>Hello {session.user.name}</h1>
-          <div>
-            <form
-              action={async () => {
-                "use server";
-                await signOut();
-              }}
-            >
-              <button className="btn btn-secondary" type="submit">
-                Sign Out
-              </button>
-            </form>
-          </div>
-        </div>
-      ) : (
-        <div>
-          <h1>User Not Signed In</h1>
-          <div>
-            <form
-              action={async () => {
-                "use server";
-                await signIn("google");
-              }}
-            >
-              <button className="btn btn-primary" type="submit">
-                Signin with Google
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
+      <HeroSection />
+      <FeatureSection />
+      <HowItWorkSection />
+      <BenefitSection />
+      <TestimonialSection />
+      <CallToAction />
+      <FAQ />
     </div>
   );
 };
