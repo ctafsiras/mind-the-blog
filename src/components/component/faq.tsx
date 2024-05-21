@@ -32,7 +32,7 @@ export function FAQ() {
           </p>
         </div>
         <div className="mx-auto mt-12 max-w-3xl space-y-4">
-          <Collapsible className="rounded-md border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-950 dark:border-gray-800">
+          <Collapsible className="rounded-md border border-gray-200 bg-white shadow-sm dark:bg-gray-950 dark:border-gray-800">
             <CollapsibleTrigger className="flex w-full items-center justify-between gap-4 px-6 py-4">
               <h3 className="text-lg font-semibold">What features does your platform offer?</h3>
               <CollapsibleTrigger asChild>
@@ -49,7 +49,7 @@ export function FAQ() {
               </p>
             </CollapsibleContent>
           </Collapsible>
-          <Collapsible className="rounded-md border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-950 dark:border-gray-800">
+          <Collapsible className="rounded-md border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-950">
             <CollapsibleTrigger className="flex w-full items-center justify-between gap-4 px-6 py-4">
               <h3 className="text-lg font-semibold">How secure is your platform?</h3>
               <CollapsibleTrigger asChild>
@@ -66,7 +66,7 @@ export function FAQ() {
               </p>
             </CollapsibleContent>
           </Collapsible>
-          <Collapsible className="rounded-md border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-950 dark:border-gray-800">
+          <Collapsible className="rounded-md border border-gray-200 bg-white shadow-sm dark:bg-gray-950 dark:border-gray-800">
             <CollapsibleTrigger className="flex w-full items-center justify-between gap-4 px-6 py-4">
               <h3 className="text-lg font-semibold">What kind of support do you offer?</h3>
               <CollapsibleTrigger asChild>
@@ -83,7 +83,7 @@ export function FAQ() {
               </p>
             </CollapsibleContent>
           </Collapsible>
-          <Collapsible className="rounded-md border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-950 dark:border-gray-800">
+          <Collapsible className="rounded-md border border-gray-200 bg-white shadow-sm dark:bg-gray-950 dark:border-gray-800">
             <CollapsibleTrigger className="flex w-full items-center justify-between gap-4 px-6 py-4">
               <h3 className="text-lg font-semibold">How much does your platform cost?</h3>
               <CollapsibleTrigger asChild>
@@ -100,7 +100,7 @@ export function FAQ() {
               </p>
             </CollapsibleContent>
           </Collapsible>
-          <Collapsible className="rounded-md border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-950 dark:border-gray-800">
+          <Collapsible className="rounded-md border border-gray-200 bg-white shadow-sm dark:bg-gray-950 dark:border-gray-800">
             <CollapsibleTrigger className="flex w-full items-center justify-between gap-4 px-6 py-4">
               <h3 className="text-lg font-semibold">How easy is it to get started with your platform?</h3>
               <CollapsibleTrigger asChild>
