@@ -4,6 +4,8 @@
 * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
 */
 
+import {JSX,SVGProps} from "react"
+
 /** Add fonts into your Next.js project:
 
 import { Inter } from 'next/font/google'
@@ -34,7 +36,7 @@ export function HowItWorkSection() {
             </div>
             <div>
               <h3 className="text-lg font-medium">Submit Your Blog URL</h3>
-              <p className="text-gray-500 dark:text-gray-400">Share your blog with us and we'll take a look.</p>
+              <p className="text-gray-500 dark:text-gray-400">Share your blog with us and we&apos;ll take a look.</p>
             </div>
           </div>
           <div className="space-y-4 text-center">
@@ -43,7 +45,7 @@ export function HowItWorkSection() {
             </div>
             <div>
               <h3 className="text-lg font-medium">Get Notified Instantly</h3>
-              <p className="text-gray-500 dark:text-gray-400">We'll let you know as soon as your blog is featured.</p>
+              <p className="text-gray-500 dark:text-gray-400">We&apos;ll let you know as soon as your blog is featured.</p>
             </div>
           </div>
           <div className="space-y-4 text-center">
@@ -52,7 +54,7 @@ export function HowItWorkSection() {
             </div>
             <div>
               <h3 className="text-lg font-medium">Stay Updated</h3>
-              <p className="text-gray-500 dark:text-gray-400">We'll keep you posted on any changes or new features.</p>
+              <p className="text-gray-500 dark:text-gray-400">We&apos;ll keep you posted on any changes or new features.</p>
             </div>
           </div>
         </div>
@@ -61,7 +63,7 @@ export function HowItWorkSection() {
   )
 }
 
-function BellIcon(props) {
+function BellIcon(props: JSX.IntrinsicAttributes&SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -82,7 +84,7 @@ function BellIcon(props) {
 }
 
 
-function PencilIcon(props) {
+function PencilIcon(props: JSX.IntrinsicAttributes&SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -103,7 +105,7 @@ function PencilIcon(props) {
 }
 
 
-function RefreshCwIcon(props) {
+function RefreshCwIcon(props: JSX.IntrinsicAttributes&SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

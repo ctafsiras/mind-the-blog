@@ -4,6 +4,8 @@
 * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
 */
 
+import {JSX,SVGProps} from "react"
+
 /** Add fonts into your Next.js project:
 
 import { Inter } from 'next/font/google'
@@ -54,7 +56,7 @@ export function BenefitSection() {
   )
 }
 
-function CheckIcon(props) {
+function CheckIcon(props: JSX.IntrinsicAttributes&SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

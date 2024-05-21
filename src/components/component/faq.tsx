@@ -19,6 +19,7 @@ To read more about using these font, please visit the Next.js documentation:
 **/
 import { Button } from "@/components/ui/button"
 import { CollapsibleTrigger, CollapsibleContent, Collapsible } from "@/components/ui/collapsible"
+import {JSX,SVGProps} from "react"
 
 export function FAQ() {
   return (
@@ -43,7 +44,7 @@ export function FAQ() {
             <CollapsibleContent className="border-t border-gray-200 px-6 py-4 dark:border-gray-800">
               <p className="text-gray-500 dark:text-gray-400">
                 Our platform offers a wide range of features to help you build and deploy your web applications. This
-                includes automated CI/CD, built-in testing, integrated collaboration tools, and more. We're constantly
+                includes automated CI/CD, built-in testing, integrated collaboration tools, and more. We&apos;re constantly
                 adding new features based on customer feedback, so check our roadmap for the latest updates.
               </p>
             </CollapsibleContent>
@@ -110,7 +111,7 @@ export function FAQ() {
             </CollapsibleTrigger>
             <CollapsibleContent className="border-t border-gray-200 px-6 py-4 dark:border-gray-800">
               <p className="text-gray-500 dark:text-gray-400">
-                We've designed our platform to be as user-friendly and straightforward as possible. Our onboarding
+                We&apos;ve designed our platform to be as user-friendly and straightforward as possible. Our onboarding
                 process is simple and guided, with plenty of documentation and tutorials to help you get up and running
                 quickly. Our team is also available to provide personalized support and training to ensure a smooth
                 transition.
@@ -123,7 +124,7 @@ export function FAQ() {
   )
 }
 
-function ChevronDownIcon(props) {
+function ChevronDownIcon(props: JSX.IntrinsicAttributes&SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

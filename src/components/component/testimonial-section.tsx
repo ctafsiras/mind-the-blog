@@ -53,7 +53,7 @@ export function TestimonialSection() {
       <div className="bg-white rounded-lg shadow-md overflow-hidden dark:bg-gray-950">
         <div className="p-6">
           <blockquote className="text-lg font-medium text-gray-900 dark:text-gray-50">
-            “I've been using this product for months and it has completely transformed my workflow. Highly recommended!”
+            “I&apos;ve been using this product for months and it has completely transformed my workflow. Highly recommended!”
           </blockquote>
           <div className="flex items-center mt-6 space-x-3">
             <div className="flex-shrink-0">

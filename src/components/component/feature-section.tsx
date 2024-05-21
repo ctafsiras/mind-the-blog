@@ -4,6 +4,9 @@
 * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
 */
 
+
+import {JSX,SVGProps} from "react"
+
 /** Add fonts into your Next.js project:
 
 import { Inter } from 'next/font/google'
@@ -38,7 +41,7 @@ export function FeatureSection() {
             <div className="space-y-2 text-center">
               <h3 className="text-xl font-bold">Easy Blog Tracking</h3>
               <p className="text-gray-500 dark:text-gray-400">
-                Submit a blog URL and let our app handle the rest. We'll automatically fetch and analyze new posts.
+                Submit a blog URL and let our app handle the rest. We&apos;ll automatically fetch and analyze new posts.
               </p>
             </div>
           </div>
@@ -70,7 +73,7 @@ export function FeatureSection() {
   )
 }
 
-function BellIcon(props) {
+function BellIcon(props: JSX.IntrinsicAttributes&SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -91,7 +94,7 @@ function BellIcon(props) {
 }
 
 
-function RssIcon(props) {
+function RssIcon(props: JSX.IntrinsicAttributes&SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -113,7 +116,7 @@ function RssIcon(props) {
 }
 
 
-function SettingsIcon(props) {
+function SettingsIcon(props: JSX.IntrinsicAttributes&SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
