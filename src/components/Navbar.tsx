@@ -61,10 +61,12 @@ export default async function Navbar() {
                 className="btn btn-ghost btn-circle avatar"
               >
                 <div className="w-10 rounded-full">
-                  <img
-                    alt="Tailwind CSS Navbar component"
-                    src={session.user.image as string}
-                  />
+                  <picture>
+                    <img
+                      alt="Tailwind CSS Navbar component"
+                      src={session.user.image as string}
+                    />
+                  </picture>
                 </div>
               </div>
               <ul
