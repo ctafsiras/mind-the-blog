@@ -21,7 +21,7 @@ To read more about using these font, please visit the Next.js documentation:
 **/
 export function HowItWorkSection() {
   return (
-    <section className="w-full py-12 md:py-24 lg:py-32">
+    <section className="w-full py-12 md:py-16 lg:py-20">
       <div className="container grid items-center justify-center gap-12 px-4 md:px-6">
         <div className="space-y-3 text-center">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">How It Works</h2>

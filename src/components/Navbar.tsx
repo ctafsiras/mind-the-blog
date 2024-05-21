@@ -4,10 +4,10 @@ import React from "react";
 
 export default async function Navbar() {
   const session = await auth();
-  console.log(session?.user?.email );
+  console.log(session?.user?.email);
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-gray-100 dark:bg-gray-800">
         <div className="flex-1">
           <Link href="/" className="btn btn-ghost text-xl">
             Mind The Blog

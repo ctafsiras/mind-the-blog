@@ -21,7 +21,7 @@ To read more about using these font, please visit the Next.js documentation:
 **/
 export function TestimonialSection() {
   return (
-    <section className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto px-4 py-12">
+    <section className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto px-4 py-12 md:py-16 lg:py-20">
       <div className="col-span-1 md:col-span-2">
         <h2 className="text-3xl font-bold mb-4 text-center">
           What Our Customers Are Saying
