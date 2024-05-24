@@ -38,10 +38,17 @@ export default function AddBlog({ email }: { email: string }) {
       <div className="flex items-center space-x-4">
         <Input
           className="flex-1 max-w-md"
-          placeholder="Enter website URL"
-          type="text"
+          onChange={(e) => setHostname(e.target.value)}
+          type="url"
+          value={hostname}
+          placeholder="site.com"
         />
-        <Button>Add Website</Button>
+        <Button
+          disabled={loading || hostname.split(".").length < 2}
+          onClick={handleSubmit}
+        >
+          Add Website
+        </Button>
       </div>
     </div>
     // <div className="card w-96 bg-secondary text-secondary-content my-2">
