@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Loader2 } from "lucide-react";
 
 export default function AddBlog({ email }: { email: string }) {
   const [hostname, setHostname] = useState("");
@@ -47,7 +48,14 @@ export default function AddBlog({ email }: { email: string }) {
           disabled={loading || hostname.split(".").length < 2}
           onClick={handleSubmit}
         >
-          Add Website
+          {loading ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Please wait
+            </>
+          ) : (
+            "Add Website"
+          )}
         </Button>
       </div>
     </div>

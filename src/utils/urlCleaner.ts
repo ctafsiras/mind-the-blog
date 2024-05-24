@@ -2,6 +2,7 @@ export function urlCleaner(url: string) {
   // const parsedUrl = new URL(url);
   // let hostname = parsedUrl.hostname;
   let hostname = url;
+  hostname = hostname.toLowerCase();
   if (hostname.startsWith("https://")) {
     hostname = hostname.slice(8);
   }
