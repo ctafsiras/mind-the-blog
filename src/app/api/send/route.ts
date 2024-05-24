@@ -35,7 +35,6 @@ export async function POST() {
   for (const site of blogSites) {
     const { latestBlog } = await getLatestBlog(site.feedUrl as string);
     if (latestBlog.title === site.latestBlogTitle) {
-      console.log(latestBlog.title, "No new blog");
       //NodeMailer system
       // const info = await transporter.sendMail({
       //   from: '"Maddison Foo Koch 👻" <maddison53@ethereal.email>', // sender address
@@ -64,7 +63,6 @@ export async function POST() {
       // };
       // await sgMail.send(msg);
     } else {
-      console.log(latestBlog.title, "New blog");
       //NodeMailer system
       // const info = await transporter.sendMail({
       //   from: '"Maddison Foo Koch 👻" <maddison53@ethereal.email>', // sender address

@@ -3,6 +3,8 @@
 import { urlCleaner } from "@/utils/urlCleaner";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 export default function AddBlog({ email }: { email: string }) {
   const [hostname, setHostname] = useState("");
@@ -32,30 +34,40 @@ export default function AddBlog({ email }: { email: string }) {
   };
 
   return (
-    <div className="card w-96 bg-secondary text-secondary-content my-2">
-      <div className="card-body">
-        <h2 className="card-title">Add New Blog</h2>
-        <p>Just type the hostname url</p>
-        <label className="input input-bordered flex items-center gap-2">
-          <span className="text-secondary">https://</span>
-          <input
-            onChange={(e) => setHostname(e.target.value)}
-            type="url"
-            value={hostname}
-            className="grow text-secondary"
-            placeholder="site.com"
-          />
-        </label>
-        <div className="card-actions justify-end">
-          <button
-            disabled={loading || hostname.split(".").length < 2}
-            onClick={handleSubmit}
-            className="btn"
-          >
-            Add
-          </button>
-        </div>
+    <div>
+      <div className="flex items-center space-x-4">
+        <Input
+          className="flex-1 max-w-md"
+          placeholder="Enter website URL"
+          type="text"
+        />
+        <Button>Add Website</Button>
       </div>
     </div>
+    // <div className="card w-96 bg-secondary text-secondary-content my-2">
+    //   <div className="card-body">
+    //     <h2 className="card-title">Add New Blog</h2>
+    //     <p>Just type the hostname url</p>
+    //     <label className="input input-bordered flex items-center gap-2">
+    //       <span className="text-secondary">https://</span>
+    //       <input
+    //         onChange={(e) => setHostname(e.target.value)}
+    //         type="url"
+    //         value={hostname}
+    //         className="grow text-secondary"
+    //         placeholder="site.com"
+    //       />
+    //     </label>
+    //     <div className="card-actions justify-end">
+    //       <button
+    //         disabled={loading || hostname.split(".").length < 2}
+    //         onClick={handleSubmit}
+    //         className="btn"
+    //       >
+    //         Add
+    //       </button>
+    //     </div>
+    //   </div>
+    // </div>
   );
 }

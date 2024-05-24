@@ -4,7 +4,6 @@ import React from "react";
 
 export default async function Navbar() {
   const session = await auth();
-  console.log(session?.user?.email);
   return (
     <div>
       <div className="navbar bg-gray-100 dark:bg-gray-800">
