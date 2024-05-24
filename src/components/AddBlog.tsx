@@ -39,7 +39,7 @@ export default function AddBlog({ email }: { email: string }) {
         <Input
           className="flex-1 max-w-md"
           onChange={(e) => setHostname(e.target.value)}
-          type="url"
+          type="text"
           value={hostname}
           placeholder="site.com"
         />
@@ -51,30 +51,5 @@ export default function AddBlog({ email }: { email: string }) {
         </Button>
       </div>
     </div>
-    // <div className="card w-96 bg-secondary text-secondary-content my-2">
-    //   <div className="card-body">
-    //     <h2 className="card-title">Add New Blog</h2>
-    //     <p>Just type the hostname url</p>
-    //     <label className="input input-bordered flex items-center gap-2">
-    //       <span className="text-secondary">https://</span>
-    //       <input
-    //         onChange={(e) => setHostname(e.target.value)}
-    //         type="url"
-    //         value={hostname}
-    //         className="grow text-secondary"
-    //         placeholder="site.com"
-    //       />
-    //     </label>
-    //     <div className="card-actions justify-end">
-    //       <button
-    //         disabled={loading || hostname.split(".").length < 2}
-    //         onClick={handleSubmit}
-    //         className="btn"
-    //       >
-    //         Add
-    //       </button>
-    //     </div>
-    //   </div>
-    // </div>
   );
 }
