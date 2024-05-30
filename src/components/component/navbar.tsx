@@ -42,7 +42,6 @@ export async function Navbar() {
         <span>Mind The Blog</span>
       </Link>
       <nav className="flex items-center gap-4">
-        <SignIn />
         <ModeToggle />
         <Link
           className="hidden text-sm font-medium transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 md:block"
@@ -94,19 +93,20 @@ export async function Navbar() {
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
-            <form
-              action={async () => {
-                "use server";
-                await signIn("google");
-              }}
-            >
-              <button
-                className="hidden h-8 items-center justify-center rounded-md bg-gray-900 px-4 text-sm font-medium text-gray-50 transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300 md:inline-flex"
-                type="submit"
-              >
-                Signin with Google
-              </button>
-            </form>
+            <SignIn />
+            // <form
+            //   action={async () => {
+            //     "use server";
+            //     await signIn("google");
+            //   }}
+            // >
+            //   <button
+            //     className="hidden h-8 items-center justify-center rounded-md bg-gray-900 px-4 text-sm font-medium text-gray-50 transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300 md:inline-flex"
+            //     type="submit"
+            //   >
+            //     Signin with Google
+            //   </button>
+            // </form>
           )}
         </div>
         <Sheet>
@@ -143,7 +143,7 @@ export async function Navbar() {
                   Dashboard
                 </Link>
               )}
-              {!session?.user && (
+              {/* {!session?.user && (
                 <form
                   action={async () => {
                     "use server";
@@ -157,7 +157,7 @@ export async function Navbar() {
                     Signin with Google
                   </button>
                 </form>
-              )}
+              )} */}
             </div>
           </SheetContent>
         </Sheet>

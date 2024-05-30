@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Share_Tech_Mono } from "next/font/google";
+import { Poppins as Font } from "next/font/google";
 import "./globals.css";
 import toast, { Toaster } from "react-hot-toast";
 import { Navbar } from "@/components/component/navbar";
@@ -7,18 +7,12 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const font = Share_Tech_Mono({ subsets: ["latin"], weight: ["400"] });
+const font = Font({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata: Metadata = {
   title: "Mind The Blog",
   description: "A smart reminder of your favorite blogs.",
 };
-// (() => {
-//   const fn = setInterval(() => {
-//     toast.success("Hi");
-//   }, 1000);
-//   clearInterval(fn);
-// })();
 
 export default function RootLayout({
   children,
@@ -26,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-thesme="light">
+    <html lang="en">
       <Analytics />
       <SpeedInsights />
       <body className={font.className}>

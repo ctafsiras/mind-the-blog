@@ -8,9 +8,9 @@ export async function feedUrlFinder(url: string) {
     "/feed/rss",
     "/feed/atom",
     "/feed.xml",
-    "/index.xml",
     "/feed.rss",
     "/feed.atom",
+    "/index.xml",
     "/blog/feed",
     "/blog/rss",
     "/blog/rss.xml",
@@ -25,9 +25,20 @@ export async function feedUrlFinder(url: string) {
 
   const parser = new Parser();
   extensions.forEach(async (ext) => {
-    const feed = await parser.parseURL(url + ext);
-
+    const feed = await parser.parseURL("https://" + url + ext);
+    if (feed.feedUrl) {
+      console.log(ext, feed.title);
+      return {
+        success: true,
+        feedUrl: feed.feedUrl,
+        name: feed.title,
+        latestBlogDescription: feed.items[0].content,
+        latestBlogTitle: feed.items[0].title,
+        latestBlogUrl: feed.items[0].link,
+        latestBlogDate: feed.items[0].isoDate,
+      };
+    }
   });
 
-  return {  };
+  return { success: false };
 }

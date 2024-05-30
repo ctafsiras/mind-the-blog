@@ -1,3 +1,4 @@
+import { feedUrlFinder } from "@/utils/feedUrlFinder";
 import { getLatestBlog } from "@/utils/latestBlog";
 import { prisma } from "@/utils/prisma";
 
@@ -32,6 +33,24 @@ export async function POST(request: Request) {
         subscribers: [data.email],
       },
     });
+
+    const feedData: any = await feedUrlFinder(data.url);
+    if (feedData.success) {
+      await prisma.blogSite.update({
+        where: {
+          id: blogSite.id,
+        },
+        data: {
+          url: data.url,
+          name: feedData.name,
+          feedUrl: feedData.feedUrl,
+          latestBlogDescription: feedData.latestBlogDescription,
+          latestBlogTitle: feedData.latestBlogTitle,
+          latestBlogUrl: feedData.latestBlogUrl,
+          latestBlogDate: feedData.latestBlogDate,
+        },
+      });
+    }
 
     return Response.json({ blogSite });
   } catch (error) {
