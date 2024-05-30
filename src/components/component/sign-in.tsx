@@ -23,7 +23,7 @@ export function SignIn() {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button className="items-center justify-center rounded-md bg-gray-900 px-4 text-sm font-medium text-gray-50 transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300 md:inline-flex" variant="outline">Sign In</Button>
+        <Button className="items-center justify-center rounded-md bg-gray-900 px-4 text-sm font-medium text-gray-50 hover:text-gray-100 transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300 md:inline-flex" variant="outline">Sign In</Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
