@@ -55,7 +55,7 @@ export function HeroSection() {
             alt="App Screenshot"
             className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-first"
             height="650"
-            src="/placeholder.svg"
+            src="/test.png"
             width="650"
           />
         </div>
